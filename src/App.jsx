@@ -121,9 +121,9 @@ export default function App() {
   };
 
   const calculatePrice = (distance) => {
-    const BASE_RATE = 5;
+    const BASE_RATE = 80;
     const RATE_PER_KM = 2;
-    const SERVICE_CHARGE = 3;
+    const SERVICE_CHARGE = 50;
     const FUEL_SURCHARGE = distance * 0.5;
 
     const volume =
@@ -401,20 +401,6 @@ export default function App() {
             <div className="results-section">
               {error && (
                 <div className="alert alert-error">
-                  <div className="alert-icon">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </div>
                   <div className="alert-content">
                     <h3 className="alert-title">Error</h3>
                     <p className="alert-message">{error}</p>
@@ -441,32 +427,32 @@ export default function App() {
                       <div className="breakdown-item">
                         <span className="breakdown-label">Base Rate</span>
                         <span className="breakdown-value">
-                          ${result.baseRate.toFixed(2)}
+                          Rs. {result.baseRate.toFixed(2)}
                         </span>
                       </div>
                       <div className="breakdown-item">
                         <span className="breakdown-label">Distance Cost</span>
                         <span className="breakdown-value">
-                          ${result.distanceCost.toFixed(2)}
+                          Rs. {result.distanceCost.toFixed(2)}
                         </span>
                       </div>
                       <div className="breakdown-item">
                         <span className="breakdown-label">Service Charge</span>
                         <span className="breakdown-value">
-                          ${result.serviceCharge.toFixed(2)}
+                          Rs. {result.serviceCharge.toFixed(2)}
                         </span>
                       </div>
                       <div className="breakdown-item">
                         <span className="breakdown-label">Fuel Surcharge</span>
                         <span className="breakdown-value">
-                          ${result.fuelSurcharge.toFixed(2)}
+                          Rs. {result.fuelSurcharge.toFixed(2)}
                         </span>
                       </div>
                       {result.volumeCharge > 0 && (
                         <div className="breakdown-item">
                           <span className="breakdown-label">Volume Charge</span>
                           <span className="breakdown-value">
-                            ${result.volumeCharge.toFixed(2)}
+                            Rs. {result.volumeCharge.toFixed(2)}
                           </span>
                         </div>
                       )}
@@ -484,7 +470,7 @@ export default function App() {
                         <div className="breakdown-item">
                           <span className="breakdown-label">Insurance</span>
                           <span className="breakdown-value">
-                            ${result.insuranceCost.toFixed(2)}
+                            Rs. {result.insuranceCost.toFixed(2)}
                           </span>
                         </div>
                       )}
@@ -493,35 +479,10 @@ export default function App() {
                           Total Cost
                         </span>
                         <span className="breakdown-value-total">
-                          ${result.totalPrice.toFixed(2)}
+                          Rs. {result.totalPrice.toFixed(2)}
                         </span>
                       </div>
                     </div>
-                  </div>
-                </div>
-              )}
-
-              {!result && !error && (
-                <div className="card">
-                  <div className="empty-state">
-                    <svg
-                      className="empty-state-icon"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                      />
-                    </svg>
-                    <h3 className="empty-state-title">No calculation yet</h3>
-                    <p className="empty-state-description">
-                      Fill in the shipment details and click "Calculate Shipping
-                      Cost" to see the pricing breakdown.
-                    </p>
                   </div>
                 </div>
               )}
